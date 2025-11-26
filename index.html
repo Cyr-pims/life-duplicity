@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cyr Pims – Cybersecurity Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cybersecurity student and aspiring SOC analyst portfolio." />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-alt: #0c101b;
+      --card-bg: #101623;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59,130,246,0.15);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2933;
+      --radius-lg: 1.25rem;
+      --shadow-soft: 0 18px 40px rgba(15,23,42,0.55);
+      --max-w: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    /* Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0));
+      border-bottom: 1px solid rgba(15,23,42,0.4);
+    }
+
+    .nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-badge {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 0.3rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(15,23,42,0.8);
+      border-color: rgba(148,163,184,0.4);
+      color: #e5e7eb;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-heading {
+      font-size: clamp(2.1rem, 3vw + 1.4rem, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.85);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #60a5fa, #3b82f6 55%, #1d4ed8 100%);
+      color: white;
+      box-shadow: 0 18px 40px rgba(37,99,235,0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(37,99,235,0.6);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.85);
+      color: var(--text-muted);
+      border-color: rgba(148,163,184,0.5);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      color: #e5e7eb;
+    }
+
+    .btn span {
+      margin-left: 0.45rem;
+      font-size: 1.05rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta div span {
+      display: block;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 55%), var(--card-bg);
+      border-radius: 1.75rem;
+      padding: 1.5rem 1.35rem;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-card-item {
+      padding: 0.7rem;
+      border-radius: 0.9rem;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(15,23,42,0.8);
+    }
+
+    .hero-card-item h4 {
+      font-size: 0.8rem;
+      margin-bottom: 0.15rem;
+      color: #e5e7eb;
+    }
+
+    .hero-card-item p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-footer {
+      margin-top: 1.1rem;
+      padding-top: 0.9rem;
+      border-top: 1px dashed rgba(148,163,184,0.4);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-card-footer strong {
+      color: #e5e7eb;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .section-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* About */
+    .about {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.4rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.5);
+      font-size: 0.92rem;
+      color: #e5e7eb;
+    }
+
+    .about p + p {
+      margin-top: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 26px rgba(15,23,42,0.6);
+      font-size: 0.85rem;
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(15,23,42,0.9);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.35fr);
+      gap: 1rem;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-body {
+      font-size: 0.84rem;
+      color: #e5e7eb;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-list {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    .project-tags {
+      margin-top: 0.3rem;
+    }
+
+    /* Experience & education */
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .timeline-item + .timeline-item {
+      margin-top: 0.4rem;
+      padding-top: 0.4rem;
+      border-top: 1px dashed rgba(148,163,184,0.4);
+    }
+
+    .timeline-title {
+      font-weight: 500;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.18rem;
+    }
+
+    /* Labs */
+    .labs-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .list {
+      padding-left: 1.1rem;
+    }
+
+    .list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Contact */
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.85);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .contact a:hover {
+      color: #e5e7eb;
+      border-color: rgba(59,130,246,0.8);
+      background: rgba(15,23,42,1);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(15,23,42,0.8);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        order: -1;
+      }
+      .projects-grid,
+      .timeline,
+      .labs-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .wrap {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="nav-brand">
+          <span> [Your Name] </span>
+          <span class="nav-badge">Cybersecurity Portfolio</span>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#labs">Labs</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div>
+          <div class="hero-subtitle">Cybersecurity • SOC • Networking</div>
+          <h1 class="hero-heading">[Your Name]</h1>
+          <p class="hero-tagline">
+            Cybersecurity student and aspiring SOC analyst with hands-on experience in SIEM, log analysis,
+            Windows Server, virtualization, and network security. Focused on building strong fundamentals
+            and real-world, lab-driven skills.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge"><span class="dot"></span>Open to junior & internship roles</span>
+            <span class="badge">Based in [City, Country]</span>
+            <span class="badge">Interested in SOC • Blue Team • GRC</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:youremail@example.com">
+              Contact Me
+              <span>↗</span>
+            </a>
+            <a class="btn btn-ghost" href="#" target="_blank">
+              View CV (PDF)
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div>
+              <span>Cybersecurity Program</span>
+              [Name of School / Program]
+            </div>
+            <div>
+              <span>Focus</span>
+              SIEM • Windows Server • Network Security
+            </div>
+            <div>
+              <span>Currently learning</span>
+              SOC workflows • Linux • Cloud security basics
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Snapshot of skills and focus">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Security Snapshot</div>
+            <span class="hero-card-pill">Entry-level & lab-driven</span>
+          </div>
+          <div class="hero-card-grid">
+            <div class="hero-card-item">
+              <h4>SIEM & Monitoring</h4>
+              <p>Sumo Logic labs, log parsing, outlier detection, dashboards.</p>
+            </div>
+            <div class="hero-card-item">
+              <h4>Systems & Virtualization</h4>
+              <p>Windows Server 2019, Hyper-V, nested virtualization, VMs.</p>
+            </div>
+            <div class="hero-card-item">
+              <h4>Networking Security</h4>
+              <p>IPv4, NAT, port forwarding, basic firewall & ACL concepts.</p>
+            </div>
+            <div class="hero-card-item">
+              <h4>Analysis & Reporting</h4>
+              <p>Case studies (e.g., Finastra SFTP breach) with security models.</p>
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <span><strong>Tools:</strong> Sumo Logic, Hyper-V, Windows Server, Linux CLI</span>
+            <span><strong>Languages:</strong> Bash basics, PowerShell basics</span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-header">
+          <h2 class="section-title">About</h2>
+          <p class="section-tagline">Who I am and what I'm building towards.</p>
+        </div>
+        <div class="about">
+          <p>
+            I am a cybersecurity student with a strong focus on hands-on learning. My current work includes
+            building and managing Windows Server 2019 lab environments, practicing SIEM workflows with Sumo Logic,
+            and solidifying networking fundamentals such as addressing, routing, NAT, and port forwarding.
+          </p>
+          <p>
+            I enjoy breaking down complex security concepts into practical steps—whether through guided labs,
+            formal projects like analyzing real-world breaches, or documenting what I learn. My goal is to grow
+            into a SOC or blue-team role where I can help detect, understand, and contain security incidents.
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-header">
+          <h2 class="section-title">Skills</h2>
+          <p class="section-tagline">A snapshot of my current technical focus.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Security & SIEM</h3>
+            <p>Foundational security operations and monitoring skills.</p>
+            <div class="pill-row">
+              <span class="pill">Log analysis</span>
+              <span class="pill">Sumo Logic</span>
+              <span class="pill">Dashboards & queries</span>
+              <span class="pill">Outlier detection</span>
+              <span class="pill">Use case–driven alerts</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Networking & Security</h3>
+            <p>Core networking concepts with a security mindset.</p>
+            <div class="pill-row">
+              <span class="pill">IPv4 addressing</span>
+              <span class="pill">Subnetting basics</span>
+              <span class="pill">NAT & PAT</span>
+              <span class="pill">Port forwarding</span>
+              <span class="pill">Basic firewall rules</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Systems & Virtualization</h3>
+            <p>Lab environments and OS administration.</p>
+            <div class="pill-row">
+              <span class="pill">Windows Server 2019</span>
+              <span class="pill">Hyper-V</span>
+              <span class="pill">Virtual machines</span>
+              <span class="pill">Nested virtualization</span>
+              <span class="pill">System hardening basics</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Linux & CLI</h3>
+            <p>Ongoing practice with the Linux command line.</p>
+            <div class="pill-row">
+              <span class="pill">File management</span>
+              <span class="pill">Text processing (cat, cut, sort)</span>
+              <span class="pill">Permissions basics</span>
+              <span class="pill">Shell navigation</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Analysis & Reporting</h3>
+            <p>Communicating security findings clearly.</p>
+            <div class="pill-row">
+              <span class="pill">Incident timelines</span>
+              <span class="pill">Risk description</span>
+              <span class="pill">Security models (McCumber)</span>
+              <span class="pill">Technical writing</span>
+              <span class="pill">Presentations</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Soft Skills</h3>
+            <p>How I approach teamwork and learning.</p>
+            <div class="pill-row">
+              <span class="pill">Curious & self-driven</span>
+              <span class="pill">Detail-oriented</span>
+              <span class="pill">Continuous learner</span>
+              <span class="pill">Collaboration</span>
+              <span class="pill">Problem solving</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Highlighted Projects</h2>
+          <p class="section-tagline">A selection of work that shows how I learn and apply security concepts.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card">
+            <h3 class="project-title">Investigating the Finastra Secure File Transfer Breach</h3>
+            <div class="project-meta">Case study • Security analysis • McCumber Cube</div>
+            <p class="project-body">
+              Conducted a structured analysis of the 2024 Finastra SFTP breach using the McCumber Cube framework.
+              Focused strictly on confirmed public facts to avoid speculation, and documented the incident timeline,
+              affected information, and safeguards.
+            </p>
+            <ul class="project-list">
+              <li>Mapped confidentiality, integrity, and availability impacts across data states.</li>
+              <li>Identified gaps in access governance, monitoring, and data minimization.</li>
+              <li>Produced a formal report following academic and APA formatting standards.</li>
+            </ul>
+            <div class="project-tags pill-row">
+              <span class="pill">Breach analysis</span>
+              <span class="pill">Risk assessment</span>
+              <span class="pill">Documentation</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="project-title">Network Address Translation & Port Forwarding Security</h3>
+            <div class="project-meta">Networking • Security • Research project</div>
+            <p class="project-body">
+              Explored how different types of NAT work in modern networks and how port forwarding impacts security
+              for home and enterprise environments.
+            </p>
+            <ul class="project-list">
+              <li>Explained SNAT, DNAT, PAT and their roles in IPv4 address conservation.</li>
+              <li>Analyzed security risks introduced by exposing internal services to the Internet.</li>
+              <li>Documented hardening recommendations, including least privilege, segmentation, and logging.</li>
+            </ul>
+            <div class="project-tags pill-row">
+              <span class="pill">NAT</span>
+              <span class="pill">Port forwarding</span>
+              <span class="pill">Network security</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="project-title">Windows Server 2019 Nested Virtualization Lab</h3>
+            <div class="project-meta">Systems • Virtualization • Lab environment</div>
+            <p class="project-body">
+              Built a Windows Server 2019 environment using Hyper-V with nested virtualization to simulate
+              multi-system lab scenarios.
+            </p>
+            <ul class="project-list">
+              <li>Installed and configured Windows Server 2019 Datacenter (Desktop Experience).</li>
+              <li>Created and tuned virtual machine settings (BIOS/UEFI, memory, CPU, virtual disks).</li>
+              <li>Practiced basic server administration, user management, and security settings.</li>
+            </ul>
+            <div class="project-tags pill-row">
+              <span class="pill">Windows Server</span>
+              <span class="pill">Hyper-V</span>
+              <span class="pill">Labs</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="project-title">Sumo Logic SIEM Lab Series</h3>
+            <div class="project-meta">SIEM • Monitoring • 20+ guided labs</div>
+            <p class="project-body">
+              Completed a sequence of Sumo Logic labs focused on core SIEM concepts: log collection, parsing,
+              visualization, outlier detection, transaction analysis, and basic threat detection patterns.
+            </p>
+            <ul class="project-list">
+              <li>Built queries and visual dashboards for log and metric data.</li>
+              <li>Used outlier and prediction features to spot unusual behavior.</li>
+              <li>Practiced thinking like a SOC analyst using realistic data scenarios.</li>
+            </ul>
+            <div class="project-tags pill-row">
+              <span class="pill">SIEM</span>
+              <span class="pill">Sumo Logic</span>
+              <span class="pill">SOC mindset</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience & Education -->
+      <section id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Experience & Education</h2>
+          <p class="section-tagline">Formal learning and practical exposure.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="card">
+            <h3 style="font-size:0.9rem; margin-bottom:0.5rem;">Experience</h3>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Cybersecurity Student</div>
+              <div class="timeline-meta">[Institution Name] • [Start Year] – Present</div>
+              <p>
+                Currently enrolled in a cybersecurity-focused program covering networking, operating systems,
+                security fundamentals, and incident analysis. Labs emphasize practical skills over theory only.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Hands-On Labs & Self-Study</div>
+              <div class="timeline-meta">Independent • Ongoing</div>
+              <p>
+                Regularly works through guided labs, documentation, and practice questions for networking,
+                Linux, Windows Server, and SIEM, including troubleshooting lab environments and tooling.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size:0.9rem; margin-bottom:0.5rem;">Education & Certifications</h3>
+
+            <div class="timeline-item">
+              <div class="timeline-title">[Program Name] – [Diploma / Certificate / Degree]</div>
+              <div class="timeline-meta">[Institution Name] • [Expected Graduation: Year]</div>
+              <p>
+                Focus areas: network fundamentals, operating systems, cybersecurity, risk management, and
+                applied labs with industry-relevant tools.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Certifications (Current / Planned)</div>
+              <div class="timeline-meta">Roadmap</div>
+              <p>
+                Aiming to validate skills with entry-level certifications such as:
+              </p>
+              <ul class="list">
+                <li>CompTIA Security+ (planned)</li>
+                <li>CompTIA Network+ (planned)</li>
+                <li>Microsoft / cloud security–related certifications (longer-term goal)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Labs -->
+      <section id="labs">
+        <div class="section-header">
+          <h2 class="section-title">Labs & Practical Work</h2>
+          <p class="section-tagline">Where most of my learning happens.</p>
+        </div>
+
+        <div class="labs-grid">
+          <div class="card">
+            <h3 style="font-size:0.9rem; margin-bottom:0.35rem;">Core Lab Streams</h3>
+            <ul class="list">
+              <li><strong>Sumo Logic SIEM:</strong> log ingestion, queries, dashboards, outlier detection.</li>
+              <li><strong>Windows Server 2019:</strong> installation, configuration, VM management in Hyper-V.</li>
+              <li><strong>Hyper-V Nested Virtualization:</strong> running multiple VMs and lab topologies.</li>
+              <li><strong>Networking Fundamentals:</strong> IP addressing, subnetting, NAT, port forwarding labs.</li>
+              <li><strong>Linux CLI:</strong> file operations, text processing, permissions, and process basics.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size:0.9rem; margin-bottom:0.35rem;">What These Labs Show</h3>
+            <ul class="list">
+              <li>Ability to follow complex lab instructions and troubleshoot issues independently.</li>
+              <li>Comfort working with system settings, virtual hardware, and basic network configuration.</li>
+              <li>Growing ability to interpret logs and connect events to potential security issues.</li>
+              <li>Discipline in documenting steps, findings, and lessons learned for future reference.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-tagline">Let’s connect for junior roles, internships, or mentoring.</p>
+        </div>
+
+        <div class="contact">
+          <div>
+            <p>
+              I’m open to entry-level cybersecurity, SOC, and security-focused IT roles, as well as internships
+              and mentorship opportunities. If my profile matches what you're looking for, feel free to reach out.
+            </p>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
+            <a href="mailto:youremail@example.com">✉ Email</a>
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">in LinkedIn</a>
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">🐙 GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> [Your Name]. Built as a cybersecurity portfolio site.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
